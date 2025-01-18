@@ -1,43 +1,79 @@
-# Pong-with-RL
-Atari-inspired Pong game featuring a Q-Learning agent that learns and evolves through dynamic gameplay.
+# **Q-Learning Pong Game** 🏓
 
-How It Works ⚙️
-Environment:
+A reinforcement learning project that combines the classic Pong game with an AI agent powered by Q-Learning. This project demonstrates how an agent learns and evolves to play Pong through trial and error.
 
-The game environment models the Pong mechanics, including ball dynamics, paddle movements, and collision physics.
-Q-Learning Agent:
+---
 
-State space includes ball position, direction, and paddle positions.
-Action space consists of paddle movements (up, down, stay).
-The agent learns by updating its Q-table based on rewards from the environment.
-Reward System:
+## **Features** ✨
 
-Positive rewards for successful ball hits and scoring.
-Negative rewards for missed balls or idle actions.
-Visualization:
+- **AI Training with Q-Learning**: 
+  - Agents are trained to maximize their performance using Q-Learning and ε-greedy exploration.
+- **Customizable Game Environment**: 
+  - Easily adjust parameters like paddle speed, ball speed, and acceleration.
+- **Real-time Visualization**: 
+  - Watch the training process live with game simulations powered by **Pygame**.
+- **Performance Metrics**: 
+  - Visualize the agent's learning progress with reward trends and action statistics.
 
-Real-time gameplay display via Pygame.
-Post-training plots of agent performance metrics.
-Key Parameters 🔧
-Learning Rate (α): 0.1
-Discount Factor (γ): 0.9
-Exploration Decay (ε-decay): 0.995
-Episodes: 20,000
-All parameters can be modified in the config.py file.
+---
 
-Results 📊
-Learning Progress: Observe how the agent's performance improves across episodes through catch counts and rewards.
-Q-Table Visualization: A snapshot of the Q-values for each state-action pair.
-Future Improvements 🚀
-Implement Deep Q-Learning (DQN) for better generalization.
-Add noise and randomness to enhance training robustness.
-Integrate multiplayer or online gameplay options.
-Contributing 🤝
-Feel free to submit issues or pull requests to improve this project. Contributions are always welcome!
+## **How It Works** ⚙️
 
-License 📜
-This project is licensed under the MIT License. See the LICENSE file for details.
+1. **Environment**:
 
-Acknowledgments 🙌
-Inspired by the classic Atari Pong.
-Thanks to the open-source community for amazing libraries like NumPy, Matplotlib, and Pygame.
+   - The game environment models the Pong mechanics, including ball dynamics, paddle movements, and collision physics.
+
+2. **Q-Learning Agent**:
+
+   - **State Space**: Includes ball position, direction, and paddle positions.
+   - **Action Space**: Consists of paddle movements (up, down, stay).
+   - **Learning Process**: The agent learns by updating its Q-table based on rewards from the environment.
+
+3. **Reward System**:
+
+   - **Positive Rewards**: For successful ball hits and scoring.
+   - **Negative Rewards**: For missed balls or idle actions.
+
+4. **Visualization**:
+
+   - **Real-time Gameplay Display**: Powered by **Pygame**.
+   - **Performance Metrics**: Post-training plots of agent performance metrics.
+
+---
+
+## **Challenges and Solutions** 🛠️
+
+1. **Initial Agent Instability**:
+   - **Problem**: In early training, the agent exhibited excessive vertical jittering, leading to inefficient gameplay and a poor visual experience.
+   - **Solution**: Introduced a penalty for each movement to discourage unnecessary actions. By fine-tuning the penalty value, this issue was significantly improved.
+
+2. **Lack of Ball Interaction**:
+   - **Problem**: The agent was initially reluctant to engage with the ball, resulting in suboptimal performance.
+   - **Solution**: Added a reward for each successful ball contact. This incentive encouraged more proactive gameplay and noticeably enhanced overall performance.
+
+3. **Uneven AI Training**:
+   - **Problem**: The right paddle's AI initially performed significantly worse than the left paddle's AI. Upon investigation, it was discovered that the default initialization of `AI()` was set for the left paddle, requiring `AI(False)` to properly train the right paddle.
+   - **Solution**: Updated the initialization to correctly specify `AI(False)` for the right paddle, ensuring balanced training for both sides. This adjustment resolved the issue effectively.
+
+---
+
+## **File Overview** 🗂️
+
+- **`main.py`**: 
+  - The main script for training and running the Pong game. Handles the initialization of the environment, AI agents, and visualization during training. (Q-learning vs. Q-learning)
+ 
+- **`main_track.py`**: 
+  - Another main script for training and running the Pong game.(Q-learning vs. Paddle that always track the ball)
+
+- **`ai.py`**: 
+  - Contains the implementation of the Q-Learning agent, including the Q-table, action selection, and reward updates.
+
+- **`environment.py`**: 
+  - Defines the Pong game environment, including ball and paddle dynamics, collision detection, and reward calculation.
+
+- **`config.py`**: 
+  - Stores all configurable parameters such as game settings (e.g., screen size, paddle speed), Q-learning parameters (e.g., alpha, gamma), and reward values.
+
+- **`play.py`**:
+  - For player to play with agent.
+
