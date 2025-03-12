@@ -16,6 +16,7 @@ A reinforcement learning project that combines the classic Pong game with an AI 
   - Visualize the agent's learning progress with reward trends and action statistics.
 
 ---
+![image](https://github.com/Raytengo/Pong-with-RL/blob/main/img/Demo.png)
 
 ## **How It Works** ⚙️
 
